@@ -1,0 +1,9 @@
+@model Event
+@{ ViewData["Title"] = "Edit Event"; }
+<div class="form-panel"><h1 class="h2 fw-bold mb-1">Edit event</h1><p class="muted mb-4">Update event information.</p>
+<form asp-action="Edit" asp-route-id="@Model.Id" method="post">
+<input type="hidden" asp-for="Id" />
+<partial name="_Form" model="Model" />
+<button class="btn btn-primary">Save changes</button> <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+</form></div>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

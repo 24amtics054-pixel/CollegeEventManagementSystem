@@ -1,0 +1,12 @@
+@model EventRegistration
+@{ ViewData["Title"] = "Register"; }
+<div class="form-panel"><h1 class="h2 fw-bold">Event registration</h1><p class="muted mb-4">Event: <strong>@ViewBag.EventTitle</strong></p>
+<form asp-action="Create" method="post">
+<input type="hidden" asp-for="EventId" />
+<div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+<div class="mb-3"><label asp-for="StudentName" class="form-label">Full name</label><input asp-for="StudentName" class="form-control" /><span asp-validation-for="StudentName" class="text-danger"></span></div>
+<div class="mb-3"><label asp-for="StudentId" class="form-label">Student ID / Enrollment number</label><input asp-for="StudentId" class="form-control" /><span asp-validation-for="StudentId" class="text-danger"></span></div>
+<div class="mb-3"><label asp-for="Email" class="form-label">College email</label><input asp-for="Email" class="form-control" /><span asp-validation-for="Email" class="text-danger"></span></div>
+<button class="btn btn-primary">Confirm registration</button> <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+</form></div>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

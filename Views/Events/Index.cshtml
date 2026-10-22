@@ -1,0 +1,29 @@
+@model IEnumerable<Event>
+@{
+    ViewData["Title"] = "Manage Events";
+}
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+  <div><h1 class="h2 fw-bold">Manage events</h1><p class="muted mb-0">Create, update, search and remove campus events.</p></div>
+  <a asp-action="Create" class="btn btn-primary">+ Create event</a>
+</div>
+<form method="get" class="searchbar mb-3">
+  <input name="search" value="@ViewBag.Search" class="form-control" placeholder="Search title, category or venue..." />
+  <button class="btn btn-dark" type="submit">Search</button>
+</form>
+<div class="table-responsive panel">
+<table class="table align-middle mb-0">
+<thead><tr><th>Event</th><th>Date</th><th>Venue</th><th>Capacity</th><th>Actions</th></tr></thead>
+<tbody>
+@foreach (var ev in Model)
+{
+<tr>
+<td><strong>@ev.Title</strong><div class="small muted">@ev.Category</div></td>
+<td>@ev.EventDate.ToString("dd MMM yyyy")</td><td>@ev.Venue</td><td>@ev.Capacity</td>
+<td class="text-nowrap">
+<a asp-action="Details" asp-route-id="@ev.Id" class="btn btn-sm btn-outline-secondary">View</a>
+<a asp-action="Edit" asp-route-id="@ev.Id" class="btn btn-sm btn-outline-primary">Edit</a>
+<a asp-action="Delete" asp-route-id="@ev.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+</td></tr>
+}
+@if (!Model.Any()) { <tr><td colspan="5" class="text-center py-4">No events found.</td></tr> }
+</tbody></table></div>

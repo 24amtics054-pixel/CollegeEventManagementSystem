@@ -1,0 +1,11 @@
+@model Event
+@{ ViewData["Title"] = "Event Details"; }
+<div class="form-panel">
+<span class="category">@Model.Category</span><h1 class="h2 fw-bold mt-3">@Model.Title</h1>
+<p class="muted">@Model.Description</p><hr />
+<p><strong>Date:</strong> @Model.EventDate.ToString("dd MMMM yyyy")</p>
+<p><strong>Venue:</strong> @Model.Venue</p><p><strong>Capacity:</strong> @Model.Capacity</p>
+<p><strong>Organizer:</strong> @(Model.Organizer ?? "Not specified")</p>
+<a asp-controller="Registrations" asp-action="Create" asp-route-eventId="@Model.Id" class="btn btn-primary">Register</a>
+<a asp-action="Index" class="btn btn-outline-secondary">Back</a>
+</div>

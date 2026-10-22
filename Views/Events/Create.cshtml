@@ -1,0 +1,8 @@
+@model Event
+@{ ViewData["Title"] = "Create Event"; }
+<div class="form-panel"><h1 class="h2 fw-bold mb-1">Create an event</h1><p class="muted mb-4">Enter details for your campus event.</p>
+<form asp-action="Create" method="post">
+<partial name="_Form" model="Model" />
+<button class="btn btn-primary">Save event</button> <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+</form></div>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

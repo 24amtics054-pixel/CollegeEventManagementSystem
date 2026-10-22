@@ -1,0 +1,8 @@
+@model IEnumerable<EventRegistration>
+@{ ViewData["Title"] = "Registrations"; }
+<h1 class="h2 fw-bold">Student registrations</h1><p class="muted mb-3">A list of students registered for campus events.</p>
+<div class="table-responsive panel"><table class="table align-middle mb-0">
+<thead><tr><th>Student</th><th>Student ID</th><th>Email</th><th>Event</th><th>Registered on</th></tr></thead><tbody>
+@foreach (var r in Model) { <tr><td>@r.StudentName</td><td>@r.StudentId</td><td>@r.Email</td><td>@r.Event?.Title</td><td>@r.RegisteredAt.ToString("dd MMM yyyy, hh:mm tt")</td></tr> }
+@if (!Model.Any()) { <tr><td colspan="5" class="text-center py-4">No registrations yet.</td></tr> }
+</tbody></table></div>
